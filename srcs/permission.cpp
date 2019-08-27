@@ -1,5 +1,5 @@
-#include "../includes/base.hpp"
 #include "../includes/permissions.hpp"
+#include "../includes/base.hpp"
 
 void  Permission::add() { 
     tPermission *p;
@@ -82,7 +82,6 @@ void    Permission::changeNum(p_list *list, int num, int new_num) {
         else
             changeNum(list->next, num, new_num);
     }
-    return;
 }
 
 

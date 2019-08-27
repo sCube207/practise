@@ -1,7 +1,14 @@
 #ifndef ROLE_HPP
 # define ROLE_HPP
 #include "base.hpp"
+#include "permissions.hpp"
 
+typedef struct          sRole {
+    int                 num;
+    char                name[100];
+    char                *description;
+    p_list              *head;
+}                       tRole;
 typedef struct          role_list {
     tRole               *p;
     struct role_list    *next;

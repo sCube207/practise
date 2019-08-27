@@ -2,6 +2,11 @@
 # define PERMITIONS_HPP
 #include "base.hpp"
 
+typedef struct          sPermission {
+    int                 num;
+    char                name[100];
+    char                *description; 
+}                       tPermission;
 typedef struct          per_list {
     tPermission         *p;
     struct per_list     *next;
