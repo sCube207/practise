@@ -19,7 +19,7 @@ void    Role::add() {
         p->description = strdup(desc);
         p->head = NULL;
         list->p = p;
-        list->next = NULL;
+        list->next = head;
         head = list;
     }
 }
@@ -29,13 +29,13 @@ void   Role::show() {
     p_list      *perm;
 
     list = head;
-    perm = list->p->head;
     while (list != NULL) {
         printf("------------------------------------------------------------\n");
         printf("Number of role - %d\n", list->p->num);
         printf("Name of the role - %s\n", list->p->name);
         printf("Description of the role - %s\n", list->p->description);
         printf("Permissions of the role:\n");
+        perm = list->p->head;
         while (perm != NULL) {
             printf("%d - %s\n", perm->p->num, perm->p->name);
             perm = perm->next;
@@ -112,22 +112,28 @@ r_list *Role::del(r_list *list, int num) {
     return NULL;
 }
 
-r_list  *Role::findRole(int num) { 
-    r_list *list;
+void    Role::find(p_list *list, int num) {
+    p_list          *p;
+    r_list          *per;
+    tPermission     *tmp;
 
-    list = head;
-    while (list != NULL) {
-        if (num == list->p->num)
-            return list;
+    p = list; 
+    per = (r_list *)malloc(sizeof(r_list));
+    if (tmp == NULL)
+        return; 
+    while (p != NULL) {
+        if (p->p->num == num)
+            break;
         else
-            list = list->next;
+            p = p->next;
     }
-    return NULL;
+    if (p != NULL && per != NULL) {
+        tmp = p->p;
+        per->next = head;
+        per->p->head = tmp;
+        head = per;
+    }
 }
-
-
-
-
 
 
 

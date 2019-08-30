@@ -15,15 +15,16 @@ typedef struct          role_list {
 }                       r_list;
 class Role {
     private:
-        r_list          *head;
         r_list          *del(r_list *list, int num);
         void            changeName(r_list *list, char *name, char *new_name);
         void            changeNum(r_list *list, int num, int new_num);
         r_list          *findRole(int num);
     public:
+        r_list          *head;
         void            add();
         void            preChangeNum();
         void            preChangeName();
+        void            find(p_list *list, int num);
         void            preDel();
         void            show();
 
